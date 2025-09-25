@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NTH_Hug - Trang âm nhạc số 1 Việt Nam</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse 80% 60% at 60% 20%, rgba(106, 90, 255, 0.50), transparent 65%),   /* tím đậm */
+      radial-gradient(ellipse 70% 60% at 20% 80%, rgba(138, 43, 226, 0.45), transparent 65%),   /* tím trung */
+      radial-gradient(ellipse 60% 50% at 60% 65%, rgba(70, 130, 180, 0.40), transparent 62%),   /* xanh biển */
+      radial-gradient(ellipse 65% 40% at 50% 60%, rgba(147, 112, 219, 0.48), transparent 68%),  /* tím nhạt */
+      linear-gradient(180deg, #e6e6ff 0%, #f0e6ff 100%);                                       /* nền tím xanh nhạt */
+    background-attachment: fixed; 
+    background-size: cover;
+  }
+</style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo" onclick="showHome()">
+                    <i class="fas fa-music"></i>
+                    <span>NTH_Hug</span>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Tìm kiếm bài hát, nghệ sĩ...">
+                    <button id="searchBtn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <!-- Auth Buttons -->
+                <div class="auth-buttons">
+                    <div id="loggedOutButtons">
+                        <a href="login.html" class="btn-login">Đăng nhập</a>
+                        <a href="register.html" class="btn-register">Đăng ký</a>
+                    </div>
+                    <div id="loggedInButtons" style="display: none;">
+                        <div class="user-menu">
+                            <span id="userName">User</span>
+                            <div class="dropdown">
+                                <a href="profile.html">Hồ sơ</a>
+                                <a href="#" onclick="logout()">Đăng xuất</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Menu -->
+<nav class="main-nav">
+    <div class="containers">
+      <div class="glass-radio-group">
+        <input type="radio" name="menu" id="glass-home" checked />
+        <label for="glass-home" onclick="showHome()">Trang chủ</label>
+
+        <input type="radio" name="menu" id="glass-category" />
+        <label for="glass-category" onclick="showGenres()">Thể loại</label>
+
+        <input type="radio" name="menu" id="glass-music" />
+        <label for="glass-music" onclick="showPlayer()">Nghe nhạc</label>
+
+        <input type="radio" name="menu" id="glass-contact" />
+        <label for="glass-contact" onclick="showContact()">Liên hệ</label>
+
+        <div class="glass-glider"></div>
+      </div>
+    </div>
+  </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section id="homeSection" class="section active">
+            <div class="container">
+                <div class="home-content">
+                    <div class="banner">
+                        <div class="banner-content">
+                            <h1>Khám phá thế giới âm nhạc cùng NTH_Hug</h1>
+                            <p>Mở tai nghe lên và thưởng thức các bài hát cùng tôi nào</p>
+                            <button class="btn-primary" onclick="showPlayer()">
+                                <i class="fas fa-play"></i>
+                                Bắt đầu nghe
+                            </button>
+                        </div>
+                    </div>
+                    <!--animation-->
+                        <div class="slider-037" style="--width: 18vw; --height: 23vw; --quantity: 8;">
+                            <div class="list-037">
+                                <div class="item-037" style="--position: 1"><img src="https://5sfashion.vn/storage/upload/images/ckeditor/4KG2VgKFDJWqdtg4UMRqk5CnkJVoCpe5QMd20Pf7.jpg" alt=""></div>
+                                <div class="item-037" style="--position: 2"><img src="https://thanhnien.mediacdn.vn/Uploaded/caotung/2022_08_07/ca-si-mono-2225.jpg" alt=""></div>
+                                <div class="item-037" style="--position: 3"><img src="https://kenh14cdn.com/203336854389633024/2025/7/26/snapins-ai3545411255735721235-17534913085851011546593-1753493979063-1753493979395243329558.jpg" alt=""></div>
+                                <div class="item-037" style="--position: 4"><img src="https://i1.sndcdn.com/artworks-6A7izzPzyeBzF2By-GnW5Zw-t500x500.jpg" alt=""></div>
+                                <div class="item-037" style="--position: 5"><img src="https://static.independent.co.uk/2024/07/11/16/20240311_LE_GLASS-ANIMALS_SHOT_02_1485_sRGB_F1.jpg" alt=""></div>
+                                <div class="item-037" style="--position: 6"><img src="https://s.upanh.net/2024-11-11/1731337775-166092-cover.jpg" alt=""></div>
+                                <div class="item-037" style="--position: 7"><img src="https://i.ytimg.com/vi/UviiOKPlg8s/maxresdefault.jpg" alt=""></div>
+                                <div class="item-037" style="--position: 8"><img src="https://photo-resize-zmp3.zadn.vn/w600_r1x1_jpeg/cover/1/1/f/3/11f3a82959c71f3127c610223fe10a9d.jpg" alt=""></div>
+                            </div>
+                        </div>
+                    <div class="song-list-section">
+                        <h2 align="center">Bài hát nổi bật</h2>
+                        <div id="featuredSongs" class="song-grid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Genres Section -->
+        <section id="genresSection" class="section">
+            <div class="container">
+                <h2>Thể loại âm nhạc</h2>
+                <div class="genres-grid" id="genresGrid">
+                </div>
+                <div id="genreSongs" class="genre-songs">
+                </div>
+            </div>
+        </section>
+
+        <!-- Music Player Section -->
+        <section id="playerSection" class="section">
+            <div class="container">
+                <div class="player-layout">
+                    <div class="main-player">
+                        <div class="player-info">
+                            <img id="playerAlbumArt" src="https://media.istockphoto.com/id/1076840920/vi/vec-to/n%E1%BB%81n-nh%E1%BA%A1c.jpg?s=612x612&w=0&k=20&c=H-n_Ov3FHuVV8mkZk-UcGr54FdFYRkTiQ2Run37HmDY=" alt="Album Art">
+                            <div class="song-info">
+                                <h3 id="playerSongTitle">Chọn bài hát để phát</h3>
+                                <p id="playerArtist">Nghệ sĩ</p>
+                                <div class="song-details">
+                                    <span id="playerGenre">Thể loại</span>
+                                    <span id="playerYear">Năm</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="player-controls">
+                            <div class="control-buttons">
+                                <button id="shuffleBtn" class="control-btn">
+                                    <i class="fas fa-random"></i>
+                                </button>
+                                <button id="prevBtn" class="control-btn">
+                                    <i class="fas fa-step-backward"></i>
+                                </button>
+                                <button id="playBtn" class="control-btn play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <button id="nextBtn" class="control-btn">
+                                    <i class="fas fa-step-forward"></i>
+                                </button>
+                                <button id="repeatBtn" class="control-btn">
+                                    <i class="fas fa-redo"></i>
+                                </button>
+                            </div>
+
+                            <!-- Progress Bar -->
+                            <div class="progress-container">
+                                <span id="currentTime">0:00</span>
+                                <div class="progress-bar">
+                                    <div id="progress" class="progress"></div>
+                                </div>
+                                <span id="totalTime">0:00</span>
+                            </div>
+                        </div>
+
+                        <!-- Additional Controls -->
+                        <div class="additional-controls">
+                            <button id="favoriteBtn" class="control-btn">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <div class="volume-control">
+                                <i class="fas fa-volume-up"></i>
+                                <input type="range" id="volumeSlider" min="0" max="100" value="50">
+                            </div>
+                            <button id="shareBtn" class="control-btn">
+                                <i class="fas fa-share"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Playlist -->
+                    <div class="playlist-section">
+                        <h3>Danh sách phát</h3>
+                        <div id="playlistSongs" class="playlist-songs">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contactSection" class="section">
+            <div class="container">
+                <h2>Liên hệ</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p><a href="mailto:nthhung0123@gmail.com" class="__cf_email__" data-cfemail="fa948e92928f949dcacbc8c9ba9d979b9396d4999597">nthhung0123@gmail.com</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Điện thoại</h4>
+                                <p>+84 332 293 084</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Địa chỉ</h4>
+                                <p>Hà Nội, Việt Nam</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="contact-form">
+                        <input type="text" placeholder="Tên của bạn" required>
+                        <input type="email" placeholder="Email của bạn" required>
+                        <textarea placeholder="Nội dung tin nhắn" rows="5" required></textarea>
+                        <button type="submit" class="btn-primary">Gửi tin nhắn</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>NTH_Hug</h4>
+                    <p>Nền tảng nghe nhạc vừa đủ số một Việt Nam. </p>
+                </div>
+                <div class="footer-section">
+                    <h4>Liên kết</h4>
+                    <ul>
+                        <li><a onclick="showHome()">Trang chủ</a></li>
+                        <li><a onclick="showGenres()">Thể loại</a></li>
+                        <li><a onclick="showPlayer()">Nghệ sĩ</a></li>
+                        <li><a onclick="showContact()">Album</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Hỗ trợ</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                        <li><a href="#">Báo lỗi</a></li>
+                        <li><a href="#">Hướng dẫn</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Pháp lý</h4>
+                    <ul>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                        <li><a href="#">Điều khoản sử dụng</a></li>
+                        <li><a href="#">Bản quyền</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Theo dõi chúng tôi</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/Hug.Ngt" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/hug_ngt/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@nth_hug" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.youtube.com/@HungNguyen-pi2of" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 NTH_Hug. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bottom Music Bar (Hidden by default) -->
+    <div id="bottomMusicBar" class="bottom-music-bar" style="display: none;">
+        <div class="bottom-bar-content">
+            <div class="bottom-song-info">
+                <img id="bottomAlbumArt" src="images/placeholder.jpg" alt="Album Art">
+                <div class="bottom-song-text">
+                    <span id="bottomSongTitle">Tên bài hát</span>
+                    <span id="bottomArtist">Nghệ sĩ</span>
+                </div>
+            </div>
+
+            <div class="bottom-controls">
+                <button id="bottomPrevBtn" class="bottom-control-btn">
+                    <i class="fas fa-step-backward"></i>
+                </button>
+                <button id="bottomPlayBtn" class="bottom-control-btn">
+                    <i class="fas fa-play"></i>
+                </button>
+                <button id="bottomNextBtn" class="bottom-control-btn">
+                    <i class="fas fa-step-forward"></i>
+                </button>
+            </div>
+
+            <div class="bottom-progress">
+                <div class="bottom-progress-bar">
+                    <div id="bottomProgress" class="bottom-progress-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="audioPlayer" preload="metadata"></audio>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/music-data.js"></script>
+    <script src="js/music-player.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

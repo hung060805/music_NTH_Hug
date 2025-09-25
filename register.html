@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký - NTH_Hug</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <!-- Header -->
+        <div class="auth-header">
+            <div class="logo" onclick="window.location.href='index.html'">
+                <i class="fas fa-music"></i>
+                <span>NTH_Hug</span>
+            </div>
+        </div>
+
+        <!-- Register Form -->
+        <div class="auth-content">
+            <div class="auth-form">
+                <h2>Đăng ký</h2>
+                <p>Tạo tài khoản để trải nghiệm âm nhạc tuyệt vời!</p>
+
+                <form id="registerForm" onsubmit="handleRegister(event)">
+                    <!-- Error/Success Message -->
+                    <div id="errorMessage" class="error-message" style="display: none;"></div>
+                    <div id="successMessage" class="success-message" style="display: none;"></div>
+
+                    <!-- Display Name Input -->
+                    <div class="form-group">
+                        <label for="displayName">Tên hiển thị</label>
+                        <input type="text" id="displayName" name="displayName" required>
+                    </div>
+
+                    <!-- Email Input -->
+                    <div class="form-group">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" id="registerEmail" name="email" required>
+                    </div>
+
+                    <!-- Password Input -->
+                    <div class="form-group">
+                        <label for="registerPassword">Mật khẩu</label>
+                        <div class="password-input">
+                            <input type="password" id="registerPassword" name="password" required minlength="6">
+                            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('registerPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <small class="form-help">Mật khẩu phải có ít nhất 6 ký tự</small>
+                    </div>
+
+                    <!-- Confirm Password Input -->
+                    <div class="form-group">
+                        <label for="confirmPassword">Xác nhận mật khẩu</label>
+                        <div class="password-input">
+                            <input type="password" id="confirmPassword" name="confirmPassword" required>
+                            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('confirmPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Music Preferences -->
+                    <div class="form-group">
+                        <label>Thể loại yêu thích (tùy chọn)</label>
+                        <div class="checkbox-grid">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="preferences" value="Pop">
+                                <span class="checkmark"></span>
+                                Lofi
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="preferences" value="V-pop">
+                                <span class="checkmark"></span>
+                                Mono
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="preferences" value="K-pop">
+                                <span class="checkmark"></span>
+                                Noel
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="preferences" value="Rock">
+                                <span class="checkmark"></span>
+                                Rap
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="preferences" value="EDM">
+                                <span class="checkmark"></span>
+                                Sơn Tùng MTP
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="preferences" value="R&B">
+                                <span class="checkmark"></span>
+                                US_UK
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Terms Agreement -->
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="agreeTerms" name="terms" required>
+                            <span class="checkmark"></span>
+                            Tôi đồng ý với <a href="#" onclick="showTerms()">Điều khoản sử dụng</a> và <a href="#" onclick="showPrivacy()">Chính sách bảo mật</a>
+                        </label>
+                    </div>
+
+                    <!-- Newsletter -->
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <span class="checkmark"></span>
+                            Nhận tin tức và khuyến mãi từ NTH_Hug
+                        </label>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn-primary full-width">
+                        Đăng ký
+                    </button>
+                </form>
+
+                <!-- Social Register -->
+                <div class="social-login">
+                    <p>Hoặc đăng ký bằng</p>
+                    <div class="social-buttons">
+                        <button class="social-btn google" onclick="registerWithGoogle()">
+                            <i class="fab fa-google"></i>
+                            Google
+                        </button>
+                        <button class="social-btn facebook" onclick="registerWithFacebook()">
+                            <i class="fab fa-facebook-f"></i>
+                            Facebook
+                        </button>
+                        <button class="social-btn apple" onclick="registerWithApple()">
+                            <i class="fab fa-apple"></i>
+                            Apple
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Login Link -->
+                <div class="auth-switch">
+                    <p>Đã có tài khoản? <a href="login.html">Đăng nhập</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms Modal -->
+    <div id="termsModal" class="modal" style="display: none;">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>Điều khoản sử dụng</h3>
+                <button class="modal-close" onclick="closeTerms()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="terms-content">
+                    <h4>1. Chấp nhận điều khoản</h4>
+                    <p>Bằng việc sử dụng dịch vụ NTH_Hug, bạn đồng ý tuân thủ các điều khoản này.</p>
+                    
+                    <h4>2. Sử dụng dịch vụ</h4>
+                    <p>Bạn có trách nhiệm sử dụng dịch vụ một cách hợp pháp và không vi phạm bản quyền.</p>
+                    
+                    <h4>3. Tài khoản người dùng</h4>
+                    <p>Bạn chịu trách nhiệm bảo mật thông tin tài khoản của mình.</p>
+                    
+                    <h4>4. Bản quyền</h4>
+                    <p>Tất cả nội dung âm nhạc trên NTH_Hug đều được bảo vệ bởi luật bản quyền.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Modal -->
+    <div id="privacyModal" class="modal" style="display: none;">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>Chính sách bảo mật</h3>
+                <button class="modal-close" onclick="closePrivacy()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="terms-content">
+                    <h4>Thu thập thông tin</h4>
+                    <p>Chúng tôi thu thập thông tin cần thiết để cung cấp dịch vụ tốt nhất.</p>
+                    
+                    <h4>Sử dụng thông tin</h4>
+                    <p>Thông tin của bạn chỉ được sử dụng để cải thiện trải nghiệm dịch vụ.</p>
+                    
+                    <h4>Bảo mật</h4>
+                    <p>Chúng tôi cam kết bảo vệ thông tin cá nhân của bạn.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/auth.js"></script>
+    <script>
+        if (isLoggedIn()) {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

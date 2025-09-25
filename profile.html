@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hồ sơ cá nhân - NTH_Hug</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo" onclick="window.location.href='index.html'">
+                    <i class="fas fa-music"></i>
+                    <span>NTH_Hug</span>
+                </div>
+                <div class="header-right">
+                    <a href="index.html" class="btn-back">
+                        <i class="fas fa-arrow-left"></i>
+                        Về trang chủ
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="profile-main">
+        <div class="container">
+            <div class="profile-layout">
+                <!-- Sidebar -->
+                <div class="profile-sidebar">
+                    <div class="profile-nav">
+                        <button class="profile-nav-item active" onclick="showProfileTab('info')">
+                            <i class="fas fa-user"></i>
+                            Thông tin cá nhân
+                        </button>
+                        <button class="profile-nav-item" onclick="showProfileTab('favorites')">
+                            <i class="fas fa-heart"></i>
+                            Bài hát yêu thích
+                        </button>
+                        <button class="profile-nav-item" onclick="showProfileTab('playlists')">
+                            <i class="fas fa-list"></i>
+                            Playlist của tôi
+                        </button>
+                        <button class="profile-nav-item" onclick="showProfileTab('history')">
+                            <i class="fas fa-history"></i>
+                            Lịch sử nghe
+                        </button>
+                        <button class="profile-nav-item" onclick="showProfileTab('settings')">
+                            <i class="fas fa-cog"></i>
+                            Cài đặt
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="profile-content">
+                    <!-- Profile Info Tab -->
+                    <div id="profileInfoTab" class="profile-tab active">
+                        <div class="profile-header">
+                            <div class="profile-avatar">
+                                <img id="profileAvatar" src="images/default-avatar.jpg" alt="Avatar">
+                                <button class="avatar-upload" onclick="uploadAvatar()">
+                                    <i class="fas fa-camera"></i>
+                                </button>
+                            </div>
+                            <div class="profile-basic-info">
+                                <h2 id="profileDisplayName">Tên người dùng</h2>
+                                <p id="profileEmail"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4c29212d25200c29342d213c2029622f2321">[email&#160;protected]</a></p>
+                                <p class="join-date">Tham gia từ: <span id="joinDate">2025</span></p>
+                            </div>
+                        </div>
+
+                        <div class="profile-form">
+                            <h3>Chỉnh sửa thông tin</h3>
+                            <form id="updateProfileForm" onsubmit="updateProfile(event)">
+                                <div class="form-group">
+                                    <label for="updateDisplayName">Tên hiển thị</label>
+                                    <input type="text" id="updateDisplayName" name="displayName" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="updateEmail">Email</label>
+                                    <input type="email" id="updateEmail" name="email" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Thể loại yêu thích</label>
+                                    <div class="checkbox-grid">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="preferences" value="Pop">
+                                            <span class="checkmark"></span>
+                                            Pop
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="preferences" value="V-pop">
+                                            <span class="checkmark"></span>
+                                            V-pop
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="preferences" value="K-pop">
+                                            <span class="checkmark"></span>
+                                            K-pop
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="preferences" value="Rock">
+                                            <span class="checkmark"></span>
+                                            Rock
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="preferences" value="EDM">
+                                            <span class="checkmark"></span>
+                                            EDM
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="preferences" value="R&B">
+                                            <span class="checkmark"></span>
+                                            R&B
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn-primary">
+                                    Cập nhật thông tin
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Change Password -->
+                        <div class="profile-section">
+                            <h3>Đổi mật khẩu</h3>
+                            <form id="changePasswordForm" onsubmit="changePassword(event)">
+                                <div class="form-group">
+                                    <label for="currentPassword">Mật khẩu hiện tại</label>
+                                    <input type="password" id="currentPassword" name="currentPassword" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="newPassword">Mật khẩu mới</label>
+                                    <input type="password" id="newPassword" name="newPassword" required minlength="6">
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirmNewPassword">Xác nhận mật khẩu mới</label>
+                                    <input type="password" id="confirmNewPassword" name="confirmNewPassword" required>
+                                </div>
+                                <button type="submit" class="btn-primary">
+                                    Đổi mật khẩu
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Favorites Tab -->
+                    <div id="profileFavoritesTab" class="profile-tab">
+                        <h3>Bài hát yêu thích</h3>
+                        <div id="favoritesList" class="song-list">
+                        </div>
+                    </div>
+
+                    <!-- Playlists Tab -->
+                    <div id="profilePlaylistsTab" class="profile-tab">
+                        <div class="tab-header">
+                            <h3>Playlist của tôi</h3>
+                            <button class="btn-primary" onclick="createNewPlaylist()">
+                                <i class="fas fa-plus"></i>
+                                Tạo playlist mới
+                            </button>
+                        </div>
+                        <div id="userPlaylistsList" class="playlists-grid">
+                        </div>
+                    </div>
+
+                    <!-- History Tab -->
+                    <div id="profileHistoryTab" class="profile-tab">
+                        <h3>Lịch sử nghe nhạc</h3>
+                        <div class="history-controls">
+                            <button class="btn-secondary" onclick="clearHistory()">
+                                <i class="fas fa-trash"></i>
+                                Xóa lịch sử
+                            </button>
+                        </div>
+                        <div id="listeningHistory" class="song-list">
+                        </div>
+                    </div>
+
+                    <!-- Settings Tab -->
+                    <div id="profileSettingsTab" class="profile-tab">
+                        <h3>Cài đặt</h3>
+                        
+                        <div class="settings-section">
+                            <h4>Thông báo</h4>
+                            <div class="setting-item">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="emailNotifications" checked>
+                                    <span class="checkmark"></span>
+                                    Nhận thông báo qua email
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="newMusicNotifications" checked>
+                                    <span class="checkmark"></span>
+                                    Thông báo nhạc mới
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <h4>Âm thanh</h4>
+                            <div class="setting-item">
+                                <label for="audioQuality">Chất lượng âm thanh</label>
+                                <select id="audioQuality">
+                                    <option value="normal">Bình thường</option>
+                                    <option value="high">Cao</option>
+                                    <option value="lossless">Không mất dữ liệu</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <h4>Riêng tư</h4>
+                            <div class="setting-item">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="publicProfile">
+                                    <span class="checkmark"></span>
+                                    Hồ sơ công khai
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="showListeningHistory">
+                                    <span class="checkmark"></span>
+                                    Hiển thị lịch sử nghe nhạc
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="settings-section danger-zone">
+                            <h4>Vùng nguy hiểm</h4>
+                            <button class="btn-danger" onclick="deleteAccount()">
+                                <i class="fas fa-trash"></i>
+                                Xóa tài khoản
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Create Playlist Modal -->
+    <div id="createPlaylistModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Tạo playlist mới</h3>
+                <button class="modal-close" onclick="closeCreatePlaylist()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="createPlaylistForm" onsubmit="handleCreatePlaylist(event)">
+                    <div class="form-group">
+                        <label for="playlistName">Tên playlist</label>
+                        <input type="text" id="playlistName" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="playlistDescription">Mô tả (tùy chọn)</label>
+                        <textarea id="playlistDescription" name="description" rows="3"></textarea>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="publicPlaylist" name="public">
+                            <span class="checkmark"></span>
+                            Playlist công khai
+                        </label>
+                    </div>
+                    <button type="submit" class="btn-primary full-width">
+                        Tạo playlist
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/music-data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/profile.js"></script>
+    <script>
+        if (!isLoggedIn()) {
+            window.location.href = 'login.html';
+        } else {
+            loadUserProfile();
+        }
+    </script>
+</body>
+</html>
