@@ -146,12 +146,12 @@ class MusicApp {
         container.innerHTML = '';
 
         const genreIcons = {
-            'Pop': 'fas fa-star',
-            'V-pop': 'fas fa-flag',
-            'K-pop': 'fas fa-heart',
-            'Rock': 'fas fa-guitar',
-            'EDM': 'fas fa-bolt',
-            'R&B': 'fas fa-music'
+            'Lofi': 'fas fa-star',
+            'Noel': 'fas fa-flag',
+            'US_UK': 'fas fa-heart',
+            'Rap': 'fas fa-guitar',
+            'Sơn Tùng MTP': 'fas fa-bolt',
+            'Mono': 'fas fa-music'
         };
 
         genres.forEach(genre => {
